@@ -6,6 +6,7 @@ let coco;
 
 beforeEach(function() {
   coco = new Pet("Coco");
+  coco.setHunger();
 });
 
 afterEach(function() {
@@ -23,12 +24,15 @@ test('should have a name, food level, health level, energy level, sleep level, a
   expect(coco.bathroomLevel).toEqual(false);
 });
 
-test('should have a food level of 5 after 3001 milliseconds', () => {
-  jest.advanceTimersByTime(3001);
+test('should have a food level of 5 after 20000 milliseconds', () => {
+  jest.advanceTimersByTime(20001);
   expect(coco.foodLevel).toEqual(5);
 });
 
-
+test('should have a food level of 10 if pet is fed', function() {
+  coco.feed();
+  expect(coco.foodLevel).toEqual(10);
+});
 
 
 
