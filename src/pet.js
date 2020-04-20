@@ -11,8 +11,12 @@ export class Pet {
   }
 
   setHunger() {
-    setInterval( () => {
-      this.foodLevel--;
-    }, 1000);
+    setTimeout( () => {
+      this.foodLevel = 5;
+    }, 20000);
+  }
+
+  feed() {
+    this.foodLevel = 10;
   }
 }
