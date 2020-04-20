@@ -7,5 +7,12 @@ export class Pet {
     this.sleepLevel = 10;
     this.snuggleLevel = 5;
     this.annoyedLevel = 0;
+    this.bathroomLevel = false;
+  }
+
+  setHunger() {
+    setInterval( () => {
+      this.foodLevel--;
+    }, 1000);
   }
 }
