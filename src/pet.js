@@ -33,6 +33,7 @@ export class Pet {
   }
 
   walk() {
+    this.bathroomLevel = 0;
     setInterval( () => {
       this.foodLevel -= 1;
       this.sleepLevel += 1;
@@ -44,11 +45,24 @@ export class Pet {
     clearInterval(this.walk);
   }
 
+  
+
+  didYouWalkTooLong() {
+    if(this.sleepLevel >= 10) {
+      this.stopWalking();
+      this.goToSleep();
+      return true;
+    } else{
+      return false;
+    }
+  }
+
   goToSleep() {
     this.asleep = true;
     this.healthLevel += 10;
     setTimeout(() => {
       this.asleep = false
+      this.sleepLevel = 0;
     }, 20000);
   }
 
