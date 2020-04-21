@@ -32,18 +32,18 @@ describe('Pet', () => {
     expect(coco.foodLevel).toEqual(8);
   });
 
-  test('should have a food level of 10 if pet is fed', function() {
+  test('should have a food level of 10 if pet is fed', () => {
     jest.advanceTimersByTime(19001)
     coco.feed();
     expect(coco.foodLevel).toEqual(10);
   });
 
-  test('should lose 10 health if 100 seconds pass without being fed', function() {
+  test('should lose 10 health if 100 seconds pass without being fed', () => {
     jest.advanceTimersByTime(100001);
     expect(coco.healthLevel).toEqual(90);
   });
 
-  test('should have asleep set to true, add 10 to health, and then change asleep to false and put sleep lvl back to 0 after 20 seconds', function() {
+  test('should have asleep set to true, add 10 to health, and then change asleep to false and put sleep lvl back to 0 after 20 seconds', () => {
     coco.healthLevel = 90;
     coco.goToSleep();
     expect(coco.asleep).toEqual(true);
@@ -52,6 +52,20 @@ describe('Pet', () => {
     expect(coco.asleep).toEqual(false);
     expect(coco.sleepLevel).toEqual(0);
     
+  });
+
+  test('should have a food level of 0, a sleeplevel of 10, and energy level of 0 after 10 seconds of walking', () => {
+    coco.walk();
+    jest.advanceTimersByTime(10001);
+    expect(coco.foodLevel).toEqual(0);
+    expect(coco.sleepLevel).toEqual(10);
+    expect(coco.energyLevel).toEqual(0);
+  });
+  
+  test('should have a bathroom level set to 0 after being walked', () => {
+    coco.bathroomLevel = 10;
+    coco.walk();
+    expect(coco.bathroomLevel).toEqual(0);
   });
 
 
