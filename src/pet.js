@@ -20,6 +20,8 @@ export class Pet {
 
   feed() {
     this.foodLevel = 10;
+    this.healthLevel += 5;
+    this.energyLevel += 2;
   }
 
   didYouGetFed() {
