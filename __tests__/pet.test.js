@@ -68,7 +68,14 @@ describe('Pet', () => {
     expect(coco.bathroomLevel).toEqual(0);
   });
 
-
+  test('should have a food level of 5, a sleep level of 5 and an energy level of 5 after stop walking after 5 seconds', () => {
+    coco.walk();
+    jest.advanceTimersByTime(5001);
+    coco.stopWalking();
+    expect(coco.foodLevel).toEqual(5);
+    expect(coco.sleepLevel).toEqual(5);
+    expect(coco.energyLevel).toEqual(5);
+  });
 
 
 });
