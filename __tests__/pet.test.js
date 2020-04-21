@@ -77,5 +77,11 @@ describe('Pet', () => {
     expect(coco.energyLevel).toEqual(5);
   });
 
+  test('should go to sleep if sleep level is greater or = to 10', () => {
+    coco.walk();
+    jest.advanceTimersByTime(10001);
+    coco.didYouWalkTooLong();
+    expect(coco.asleep).toEqual(true);
+  })
 
 });
