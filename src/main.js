@@ -7,6 +7,19 @@ import { Pet } from "./pet.js";
 
 $(document).ready(function() {
   let coco = new Pet("Coco");
+
+  function initializeHunger() {
+    coco.setHunger();
+    setInterval( () => {
+     $(".foodLevel").text(coco.foodLevel);
+    }, 20000);
+  }
+  
+  (function() {
+    initializeHunger();
+  })();
+  
+
   $(".feedButton").click(function() {
     coco.feed();
     $(".foodLevel").text(coco.foodLevel);
